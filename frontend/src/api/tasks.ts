@@ -95,13 +95,12 @@ export async function getTask(id: string): Promise<APIResult<Task>> {
 
 export async function getAllTasks(): Promise<APIResult<Task[]>> {
   try {
-    const response = await get(`api/tasks`);
+    const response = await get(`/api/tasks`);
     const json = await response.json();
     const tasks: Task[] = [];
 
-    // FIXME: This needs to be changed once I figure out what the resposne looks like
-    Object.entries(json).forEach(([key, value]) => {
-      console.log(key + ": " + value);
+    Object.entries(json).forEach((obj) => {
+      tasks.push(parseTask(obj[1] as TaskJSON));
     });
 
     return { success: true, data: tasks };

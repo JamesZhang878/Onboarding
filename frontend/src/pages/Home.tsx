@@ -16,15 +16,6 @@ export function Home() {
         <Link to="/about">About this app</Link>
       </p>
       <TaskForm mode="create" />
-      <TaskItem
-        task={{
-          _id: "foo123",
-          title: "My title",
-          description: "My description",
-          isChecked: true,
-          dateCreated: new Date(),
-        }}
-      />
     </Page>
   );
 }
